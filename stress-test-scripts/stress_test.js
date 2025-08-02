@@ -2,7 +2,7 @@ import http from 'k6/http';
 import { check } from 'k6';
 
 // Define the URL of your API
-const url = 'https://api.lebondeveloppeur.net/api/products';
+const url = 'https://back.caria.tn/api/governorates';
 
 // Define the payload (the body of the POST request)
 const payload = JSON.stringify({
@@ -18,13 +18,13 @@ const headers = {
 
 export const options = {
   stages: [
-    { duration: '5m', target: 100 },
+    { duration: '30m', target: 1000 },
   ],
 };
 
 export default function () {
   // Send the POST request
-  const res = http.post(url, payload, { headers });
+  const res = http.get(url, { headers });
 
   // Log the response status code for each request
   console.log(`Response code: ${res.status}`);
